@@ -26,26 +26,22 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
   let correctCount = 0;
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for (let i = 0; i < candidateAnswers.length; i++)
+  for (let i = 0; i < candidateAnswers.length; i++) {
+    console.log(`${i+1}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      console.log(`${i}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
       correctCount++
     }
-    else {
-      console.log(`${i}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
-    }
-
+  }
 
   let grade = (correctCount/questions.length)*100;
+  console.log(`>>> Overall Grade: ${grade}% (${correctCount} of responses ${questions.length} correct) <<<`);
   if (grade >= 80){
-    console.log(`>>> Overall Grade: ${grade}% (${correctCount} of responses ${questions.length} correct) <<<`);
     console.log(`>>> Status: PASS <<<`);
   } 
   else {
-    console.log(`>>> Overall Grade: ${grade}% (${correctCount} of responses ${questions.length} correct) <<<`);
     console.log(`>>> Status: Failed <<<`);
   }
-    
+  
   return grade;
 }
 
