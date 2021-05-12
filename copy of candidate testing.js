@@ -12,6 +12,10 @@ let questions = ["1) Who was the first American woman in space? ", "2) True or F
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
 
+function makeSpacer(){
+  console.log("-----------------------------");
+}
+
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   candidateName = input.question("What is your name? ");
@@ -21,6 +25,7 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for(let i = 0; i < questions.length; i++)
   candidateAnswers.push(input.question(questions[i]));
+  makeSpacer();
 }
 
 function gradeQuiz(candidateAnswers) {
@@ -28,11 +33,13 @@ function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   for (let i = 0; i < candidateAnswers.length; i++)
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      console.log(`${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
+      console.log(`Good job ${candidateName}, ${candidateAnswers[i]} is correct.`);
+      makeSpacer();
       correctCount++
     }
     else {
-      console.log(`${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
+      console.log(`I am sorry ${candidateName}, but ${candidateAnswers[i]} is wrong. \nThe correct answer is ${correctAnswers[i]}.`);
+      makeSpacer();
     }
 
 
@@ -52,7 +59,8 @@ function gradeQuiz(candidateAnswers) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  console.log(`Candidate Name: ${candidateName}`);
+  console.log(`Hello ${candidateName}, good luck on your exam!`);
+  makeSpacer();
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
